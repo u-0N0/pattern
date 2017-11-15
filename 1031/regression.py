@@ -11,7 +11,7 @@ def init_data(filename):
     df.index = range(len(df))
     df.loc[:,'horsepower'] = df.loc[:,'horsepower'].astype('float')
 
-    x = np.array([np.ones(len(df)), df.weight, df.horsepower]).T
+    x = np.array([np.ones(len(df)), df.acceleration, df.displacement]).T
     t = np.array(df.mpg).T
     
     return x, t
@@ -30,8 +30,8 @@ def main():
 
     fig = plt.figure()
     ax = Axes3D(fig)
-    ax.set_xlabel('weight')
-    ax.set_ylabel('horsepower')
+    ax.set_xlabel('acceleration')
+    ax.set_ylabel('displacement')
     ax.set_zlabel('mpg')
 
     ax.scatter(x[:,1], x[:,2], t)
@@ -44,7 +44,7 @@ def main():
     Y = w[0] + w[1]*X1 + w[2]*X2
 
     ax.plot_wireframe(X1, X2, Y)
-    
+
     plt.show()
 
 main()
